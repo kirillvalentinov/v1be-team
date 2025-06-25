@@ -244,13 +244,14 @@
         }
 
         /* Стили для текущего клана */
-        .clan-card:first-child {
+        .clan-card.current-clan {
             background: linear-gradient(135deg, rgba(255, 77, 77, 0.1) 0%, rgba(0, 0, 0, 0.7) 100%);
             border: 1px solid rgba(255, 77, 77, 0.3);
             position: relative;
+            order: -1; /* Помещаем текущий клан в начало списка */
         }
 
-        .clan-card:first-child::before {
+        .clan-card.current-clan::before {
             content: "Текущий клан";
             position: absolute;
             top: -12px;
@@ -260,6 +261,11 @@
             border-radius: 15px;
             font-size: 0.8em;
             font-weight: bold;
+        }
+
+        .clan-history-container {
+            display: flex;
+            flex-direction: column;
         }
 
         @media (max-width: 768px) {
@@ -323,7 +329,7 @@
                     <p class="clan-period">2023 - настоящее время</p>
                     <p class="clan-description">Текущий клан, сформированный из опытных игроков. Основная цель - участие в турнирах и развитие командного взаимодействия.</p>
                 </div>
-                <div class="clan-card">
+                <div class="clan-card current-clan">
                     <h3 class="clan-name">[IN-TY] INFINlTY</h3>
                     <p class="clan-period">2024 - настоящее время</p>
                     <p class="clan-description">Текущий клан команды V1BE. Клан [IN-TY] INFINlTY представляет собой новую главу в истории команды, где игроки продолжают совершенствовать свое мастерство и стремятся к новым высотам в World of Tanks.</p>
