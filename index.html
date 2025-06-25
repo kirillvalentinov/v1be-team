@@ -16,14 +16,14 @@
             font-family: 'Roboto', Arial, sans-serif;
             margin: 0;
             color: #ffffff;
-            background: linear-gradient(rgba(0,0,0,0.92), rgba(0,0,0,0.92)), 
-                       url('https://cdn.discordapp.com/attachments/1219518603727319050/1219518661243011082/v1be-logo.png') no-repeat center center fixed;
-            background-size: contain;
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), 
+                       url('https://wallpapercave.com/wp/wp6757002.jpg') no-repeat center center fixed;
+            background-size: cover;
             min-height: 100vh;
         }
 
         .header {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
             padding: 40px 20px 100px;
             text-align: center;
             position: relative;
@@ -31,16 +31,32 @@
         }
 
         .logo-container {
-            max-width: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 600px;
             margin: 0 auto;
             padding: 20px;
             position: relative;
         }
 
-        .logo-container img {
-            width: 100%;
-            height: auto;
+        .logo-text {
+            font-size: 4em;
+            font-weight: bold;
+            color: #ff4d4d;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin: 0;
+            letter-spacing: 2px;
+            font-family: 'Arial Black', sans-serif;
+            background: linear-gradient(45deg, #ff4d4d, #ffad4d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             filter: drop-shadow(0 0 10px rgba(255,77,77,0.5));
+        }
+
+        .logo-text span {
+            display: inline-block;
+            transform: skew(-10deg);
         }
 
         .logo-small {
@@ -266,7 +282,7 @@
 <body>
     <header class="header">
         <div class="logo-container">
-            <img src="https://cdn.discordapp.com/attachments/1219518603727319050/1219518661243011082/v1be-logo.png" alt="V1BE Logo" class="main-logo">
+            <h1 class="logo-text"><span>V1BE</span></h1>
         </div>
         <p>Профессиональная команда World of Tanks</p>
     </header>
