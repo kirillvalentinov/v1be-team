@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+    <path d="M180,280 L620,280 L600,320 L200,320 Z 
+             M220,240 L580,240 L560,280 L240,280 Z 
+             M260,140 L540,140 L520,240 L280,240 Z" 
+          fill="currentColor" stroke="none"/>
+</svg> 

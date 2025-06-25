@@ -69,13 +69,6 @@
             filter: drop-shadow(0 0 8px rgba(255,77,77,0.4));
         }
 
-        .header h1 {
-            font-size: 3.5em;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            display: none;
-        }
-
         .nav {
             background: rgba(42, 42, 42, 0.9);
             padding: 15px 0;
@@ -110,101 +103,6 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 40px 20px;
-        }
-
-        .team-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-            padding: 20px;
-        }
-
-        .player-card {
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 10px;
-            padding: 15px;
-            text-align: center;
-            position: relative;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .player-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .player-avatar {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #ff4d4d, #ffad4d);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 10px;
-            font-size: 24px;
-            font-weight: bold;
-            color: white;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        }
-
-        .tank-preview {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: all 0.3s ease;
-            z-index: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0, 0, 0, 0.95);
-            border-radius: 10px;
-            padding: 20px;
-            transform: scale(0.95);
-        }
-
-        .tank-preview img {
-            max-width: 90%;
-            max-height: 90%;
-            object-fit: contain;
-            filter: drop-shadow(0 0 10px rgba(255, 77, 77, 0.5));
-            transform: scale(0.95);
-            transition: all 0.3s ease;
-        }
-
-        .player-card:hover .tank-preview {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        .player-card:hover .tank-preview img {
-            transform: scale(1);
-        }
-
-        .player-card:hover .player-avatar {
-            opacity: 0;
-        }
-
-        .player-avatar {
-            transition: all 0.3s ease;
-            position: relative;
-            z-index: 2;
-        }
-
-        .player-name {
-            color: #ff4d4d;
-            margin: 0 0 5px 0;
-            font-size: 1.2em;
-        }
-
-        .player-role {
-            color: #ffad4d;
-            margin: 0;
-            font-size: 0.9em;
         }
 
         .section-title {
@@ -248,106 +146,31 @@
         }
 
         .clan-period {
-            color: #888;
-            margin: 5px 0;
-            font-style: italic;
+            color: #ffad4d;
+            margin: 0 0 15px 0;
+            font-size: 0.9em;
         }
 
         .clan-description {
-            margin: 10px 0 0 0;
+            color: #ffffff;
             line-height: 1.6;
         }
 
-        /* Стили для текущего клана */
-        .clan-card.current-clan {
-            background: linear-gradient(135deg, rgba(255, 77, 77, 0.1) 0%, rgba(0, 0, 0, 0.7) 100%);
-            border: 1px solid rgba(255, 77, 77, 0.3);
-            position: relative;
-            order: -1; /* Помещаем текущий клан в начало списка */
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .clan-card.current-clan:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(255, 77, 77, 0.4);
-            background: linear-gradient(135deg, rgba(255, 77, 77, 0.2) 0%, rgba(0, 0, 0, 0.8) 100%);
-        }
-
-        .clan-card.current-clan a {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-
-        .clan-card.current-clan::before {
-            content: "Текущий клан";
-            position: absolute;
-            top: -12px;
-            right: 20px;
-            background: #ff4d4d;
-            padding: 5px 15px;
-            border-radius: 15px;
-            font-size: 0.8em;
-            font-weight: bold;
-        }
-
-        .clan-history-container {
-            display: flex;
-            flex-direction: column;
-        }
-
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2.5em;
+            .logo-text {
+                font-size: 3em;
+            }
+
+            .logo-small {
+                width: 60px;
+                right: -70px;
             }
 
             .nav ul {
                 flex-direction: column;
                 align-items: center;
+                gap: 15px;
             }
-
-            .team-section {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .logo-small {
-                position: static;
-                width: 60px;
-                margin-top: 20px;
-                transform: none;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .team-section {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .main-logo {
-            max-width: 300px;
-            height: auto;
-            border-radius: 10px;
-            filter: drop-shadow(0 0 20px rgba(255,77,77,0.5));
-            transition: transform 0.3s ease;
-        }
-
-        .main-logo:hover {
-            transform: scale(1.05);
-        }
-
-        .tank-svg {
-            width: 100%;
-            height: 100%;
-            color: #ff4d4d;
-            transition: all 0.3s ease;
-        }
-
-        .player-card:hover .tank-svg {
-            color: #ffad4d;
-            transform: scale(1.1);
-            filter: drop-shadow(0 0 5px currentColor);
         }
     </style>
 </head>
@@ -355,135 +178,43 @@
     <header class="header">
         <div class="logo-container">
             <h1 class="logo-text"><span>V1BE</span></h1>
+            <img src="images/v1be-logo-tank.png" alt="V1BE Tank Logo" class="logo-small">
         </div>
-        <p>Профессиональная команда World of Tanks</p>
     </header>
 
     <nav class="nav">
         <ul>
-            <li><a href="#team">Состав команды</a></li>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="team-roster.html">Состав команды</a></li>
             <li><a href="clan-history.html">История кланов</a></li>
-            <li><a href="#achievements">Достижения</a></li>
-            <li><a href="#schedule">Расписание</a></li>
         </ul>
     </nav>
 
     <div class="container">
-        <section id="team">
-            <h2 class="section-title">Состав команды</h2>
-            <div class="team-section">
-                <div class="player-card">
-                    <div class="tank-preview">
-                        <svg viewBox="0 0 200 100" class="tank-svg">
-                            <!-- EBR 105 - колесный танк с характерным силуэтом -->
-                            <path d="M20,60 L180,60 L170,80 L30,80 Z M40,50 C40,50 80,50 100,50 C120,50 160,50 160,50 L155,60 L45,60 Z M90,30 L110,30 L108,50 L92,50 Z M30,70 A10,10 0 1,0 30,90 A10,10 0 1,0 30,70 M60,70 A10,10 0 1,0 60,90 A10,10 0 1,0 60,70 M140,70 A10,10 0 1,0 140,90 A10,10 0 1,0 140,70 M170,70 A10,10 0 1,0 170,90 A10,10 0 1,0 170,70" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <div class="player-avatar">A</div>
-                    <h3 class="player-name">A1c0_Fighter</h3>
-                </div>
-
-                <div class="player-card">
-                    <div class="tank-preview">
-                        <svg viewBox="0 0 200 100" class="tank-svg">
-                            <!-- Object 279(e) - характерная форма корпуса -->
-                            <path d="M40,70 Q100,50 160,70 L150,85 Q100,75 50,85 Z M60,55 Q100,40 140,55 L135,70 Q100,60 65,70 Z M90,35 L110,35 L108,55 L92,55 Z" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <div class="player-avatar">E</div>
-                    <h3 class="player-name">EternalSnowfall</h3>
-                </div>
-
-                <div class="player-card">
-                    <div class="tank-preview">
-                        <svg viewBox="0 0 200 100" class="tank-svg">
-                            <!-- Object 430U - приземистый силуэт -->
-                            <path d="M30,65 L170,65 L160,85 L40,85 Z M50,55 Q100,45 150,55 L145,65 L55,65 Z M85,35 L115,35 L112,55 L88,55 Z M45,75 L55,75 M145,75 L155,75" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <div class="player-avatar">I</div>
-                    <h3 class="player-name">INedStreXI</h3>
-                </div>
-
-                <div class="player-card">
-                    <div class="tank-preview">
-                        <svg viewBox="0 0 200 100" class="tank-svg">
-                            <!-- Object 268 v4 - характерная ПТ-САУ -->
-                            <path d="M20,70 L180,70 L170,85 L30,85 Z M40,60 L160,60 L155,70 L45,70 Z M70,40 L130,40 L125,60 L75,60 Z M35,77 L45,77 M155,77 L165,77" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <div class="player-avatar">L</div>
-                    <h3 class="player-name">last_25</h3>
-                </div>
-
-                <div class="player-card">
-                    <div class="tank-preview">
-                        <svg viewBox="0 0 200 100" class="tank-svg">
-                            <!-- UDES 15/16 - шведский танк с характерным наклоном -->
-                            <path d="M40,75 L160,65 L150,85 L50,85 Z M60,65 L140,55 L135,65 L65,70 Z M80,45 L120,40 L115,55 L85,58 Z" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <div class="player-avatar">U</div>
-                    <h3 class="player-name">ugopejke88</h3>
-                </div>
-
-                <div class="player-card">
-                    <div class="tank-preview">
-                        <svg viewBox="0 0 200 100" class="tank-svg">
-                            <!-- Pz.Kpfw. VII - немецкий тяжелый танк -->
-                            <path d="M30,70 L170,70 L160,85 L40,85 Z M50,60 L150,60 L145,70 L55,70 Z M75,40 L125,40 L120,60 L80,60 Z M35,77 L45,77 M155,77 L165,77" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <div class="player-avatar">J</div>
-                    <h3 class="player-name">J0hnyB3st</h3>
-                </div>
-
-                <div class="player-card">
-                    <div class="tank-preview">
-                        <svg viewBox="0 0 200 100" class="tank-svg">
-                            <!-- Bat.-Châtillon 25 t - французский автомат -->
-                            <path d="M40,70 L160,70 L150,85 L50,85 Z M60,60 L140,60 L135,70 L65,70 Z M80,35 L120,35 L115,60 L85,60 Z M45,77 L55,77 M145,77 L155,77" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <div class="player-avatar">F</div>
-                    <h3 class="player-name">fgh171950</h3>
-                </div>
-
-                <div class="player-card">
-                    <div class="tank-preview">
-                        <svg viewBox="0 0 200 100" class="tank-svg">
-                            <!-- AMX 13 105 - легкий танк с осциллирующей башней -->
-                            <path d="M50,70 L150,70 L140,85 L60,85 Z M70,60 L130,60 L125,70 L75,70 Z M85,35 L115,35 L110,60 L90,60 Z M55,77 L65,77 M135,77 L145,77" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <div class="player-avatar">F</div>
-                    <h3 class="player-name">___Flame</h3>
-                </div>
-
-                <div class="player-card">
-                    <div class="tank-preview">
-                        <svg viewBox="0 0 200 100" class="tank-svg">
-                            <!-- IS-7 - советский тяжелый танк -->
-                            <path d="M30,70 L170,70 L160,85 L40,85 Z M50,60 L150,60 L145,70 L55,70 Z M70,40 L130,40 L125,60 L75,60 Z M35,77 L45,77 M155,77 L165,77" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <div class="player-avatar">P</div>
-                    <h3 class="player-name">pro100_BOSS_2002</h3>
-                </div>
+        <h2 class="section-title">Добро пожаловать в команду V1BE</h2>
+        <div class="clan-history-section">
+            <div class="clan-card">
+                <a href="https://lesta.ru/clans/wot/557880/" target="_blank">
+                    <h3 class="clan-name">V1BE</h3>
+                    <p class="clan-period">2023 - настоящее время</p>
+                    <p class="clan-description">
+                        Основной клан команды, созданный для участия в турнирах и развития киберспортивного направления. 
+                        Клан фокусируется на командных тренировках, разработке тактик и стратегий для различных карт и режимов игры.
+                    </p>
+                </a>
             </div>
-        </section>
-    </div>
 
-    <script>
-        // Плавная прокрутка к секциям
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+            <div class="clan-card">
+                <a href="https://lesta.ru/clans/wot/11983/" target="_blank">
+                    <h3 class="clan-name">[IN-TY] INFINlTY</h3>
+                    <p class="clan-period">2022 - 2023</p>
+                    <p class="clan-description">
+                        Предыдущий клан, в котором формировался костяк нашей команды. 
+                        Здесь мы получили первый опыт командных боев и участия в турнирах.
+                    </p>
+                </a>
+            </div>
+        </div>
+    </div>
 </body>
 </html> 
