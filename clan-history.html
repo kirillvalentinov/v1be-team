@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>История кланов V1BE</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            color: #ffffff;
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), 
+                       url('https://wallpapercave.com/wp/wp6757002.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
+            padding: 40px 20px 100px;
+            text-align: center;
+            position: relative;
+            border-bottom: 4px solid #ff4d4d;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+
+        .logo-text {
+            font-size: 4em;
+            font-weight: bold;
+            color: #ff4d4d;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin: 0;
+            letter-spacing: 2px;
+            font-family: 'Arial Black', sans-serif;
+            background: linear-gradient(45deg, #ff4d4d, #ffad4d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 10px rgba(255,77,77,0.5));
+        }
+
+        .logo-text span {
+            display: inline-block;
+            transform: skew(-10deg);
+        }
+
+        .nav {
+            background: rgba(42, 42, 42, 0.9);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(5px);
+            border-bottom: 2px solid #ff4d4d;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .nav a:hover {
+            background: #404040;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .section-title {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #ff4d4d;
+        }
+
+        .clan-history-section {
+            margin-top: 40px;
+            margin-bottom: 60px;
+        }
+
+        .clan-card {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .clan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 77, 77, 0.3);
+        }
+
+        .clan-card a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .clan-name {
+            color: #ff4d4d;
+            margin: 0 0 10px 0;
+            font-size: 1.5em;
+        }
+
+        .clan-period {
+            color: #888;
+            margin: 5px 0;
+            font-style: italic;
+        }
+
+        .clan-description {
+            margin: 10px 0 0 0;
+            line-height: 1.6;
+        }
+
+        .clan-card.current-clan {
+            background: linear-gradient(135deg, rgba(255, 77, 77, 0.1) 0%, rgba(0, 0, 0, 0.7) 100%);
+            border: 1px solid rgba(255, 77, 77, 0.3);
+            position: relative;
+            order: -1;
+        }
+
+        .clan-card.current-clan::before {
+            content: "Текущий клан";
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: #ff4d4d;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+
+        .clan-history-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media (max-width: 768px) {
+            .nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo-container">
+            <h1 class="logo-text"><span>V1BE</span></h1>
+        </div>
+        <p>История кланов</p>
+    </header>
+
+    <nav class="nav">
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="clan-history.html">История кланов</a></li>
+            <li><a href="#achievements">Достижения</a></li>
+            <li><a href="#schedule">Расписание</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="clan-history">
+            <h2 class="section-title">История кланов</h2>
+            <div class="clan-history-section">
+                <div class="clan-history-container">
+                    <div class="clan-card">
+                        <a href="https://lesta.ru/clans/wot/557880/" target="_blank">
+                            <h3 class="clan-name">V1BE</h3>
+                            <p class="clan-period">2023 - настоящее время</p>
+                            <p class="clan-description">Текущий клан, сформированный из опытных игроков. Основная цель - участие в турнирах и развитие командного взаимодействия.</p>
+                        </a>
+                    </div>
+
+                    <div class="clan-card current-clan">
+                        <a href="https://lesta.ru/clans/wot/11983/" target="_blank">
+                            <h3 class="clan-name">[IN-TY] INFINlTY</h3>
+                            <p class="clan-period">2024 - настоящее время</p>
+                            <p class="clan-description">Текущий клан команды V1BE. Клан [IN-TY] INFINlTY представляет собой новую главу в истории команды, где игроки продолжают совершенствовать свое мастерство и стремятся к новым высотам в World of Tanks.</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html> 
