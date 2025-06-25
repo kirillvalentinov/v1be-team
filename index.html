@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World of Tanks Team</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            color: #ffffff;
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), 
+                       url('https://wallpapercave.com/wp/wp6757002.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                       url('https://wallpapercave.com/wp/wp2405368.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+            border-bottom: 4px solid #ff4d4d;
+        }
+
+        .header h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .nav {
+            background: rgba(42, 42, 42, 0.9);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(5px);
+            border-bottom: 2px solid #ff4d4d;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .nav a:hover {
+            background: #404040;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .team-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .player-card {
+            background: rgba(42, 42, 42, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .player-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255,77,77,0.3);
+        }
+
+        .player-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #ff4d4d, #ffad4d);
+        }
+
+        .player-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background: #404040;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            color: #ffffff;
+        }
+
+        .player-name {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #ff4d4d;
+        }
+
+        .player-role {
+            color: #888;
+            font-size: 1.1em;
+        }
+
+        .section-title {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #ff4d4d;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5em;
+            }
+
+            .nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .team-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>V1BE</h1>
+        <p>Профессиональная команда World of Tanks</p>
+    </header>
+
+    <nav class="nav">
+        <ul>
+            <li><a href="#team">Состав команды</a></li>
+            <li><a href="#achievements">Достижения</a></li>
+            <li><a href="#schedule">Расписание</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="team">
+            <h2 class="section-title">Состав команды</h2>
+            <div class="team-section">
+                <div class="player-card">
+                    <div class="player-avatar">A</div>
+                    <h3 class="player-name">A1c0_Fighter</h3>
+                    <p class="player-role">Командир</p>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-avatar">E</div>
+                    <h3 class="player-name">EternalSnowfall</h3>
+                    <p class="player-role">Тяжелый танк</p>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-avatar">I</div>
+                    <h3 class="player-name">INedStreXI</h3>
+                    <p class="player-role">Средний танк</p>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-avatar">L</div>
+                    <h3 class="player-name">last_25</h3>
+                    <p class="player-role">Разведчик</p>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-avatar">U</div>
+                    <h3 class="player-name">ugopejke88</h3>
+                    <p class="player-role">ПТ-САУ</p>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-avatar">J</div>
+                    <h3 class="player-name">J0hnyB3st</h3>
+                    <p class="player-role">Артиллерия</p>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-avatar">F</div>
+                    <h3 class="player-name">fgh171950</h3>
+                    <p class="player-role">Запасной игрок</p>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-avatar">F</div>
+                    <h3 class="player-name">___Flame</h3>
+                    <p class="player-role">Запасной игрок</p>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-avatar">P</div>
+                    <h3 class="player-name">pro100_BOSS_2002</h3>
+                    <p class="player-role">Запасной игрок</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Плавная прокрутка к секциям
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
