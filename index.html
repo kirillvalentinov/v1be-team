@@ -257,6 +257,20 @@
             border: 1px solid rgba(255, 77, 77, 0.3);
             position: relative;
             order: -1; /* Помещаем текущий клан в начало списка */
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .clan-card.current-clan:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(255, 77, 77, 0.4);
+            background: linear-gradient(135deg, rgba(255, 77, 77, 0.2) 0%, rgba(0, 0, 0, 0.8) 100%);
+        }
+
+        .clan-card.current-clan a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
 
         .clan-card.current-clan::before {
@@ -357,9 +371,11 @@
                     <p class="clan-description">Текущий клан, сформированный из опытных игроков. Основная цель - участие в турнирах и развитие командного взаимодействия.</p>
                 </div>
                 <div class="clan-card current-clan">
-                    <h3 class="clan-name">[IN-TY] INFINlTY</h3>
-                    <p class="clan-period">2024 - настоящее время</p>
-                    <p class="clan-description">Текущий клан команды V1BE. Клан [IN-TY] INFINlTY представляет собой новую главу в истории команды, где игроки продолжают совершенствовать свое мастерство и стремятся к новым высотам в World of Tanks.</p>
+                    <a href="https://lesta.ru/clans/wot/11983/" target="_blank">
+                        <h3 class="clan-name">[IN-TY] INFINlTY</h3>
+                        <p class="clan-period">2024 - настоящее время</p>
+                        <p class="clan-description">Текущий клан команды V1BE. Клан [IN-TY] INFINlTY представляет собой новую главу в истории команды, где игроки продолжают совершенствовать свое мастерство и стремятся к новым высотам в World of Tanks.</p>
+                    </a>
                 </div>
             </div>
         </section>
