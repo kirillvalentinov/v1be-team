@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>История кланов V1BE</title>
+    <title>World of Tanks Team</title>
     <style>
         * {
             margin: 0;
@@ -57,6 +57,16 @@
         .logo-text span {
             display: inline-block;
             transform: skew(-10deg);
+        }
+
+        .logo-small {
+            position: absolute;
+            width: 80px;
+            height: auto;
+            top: 50%;
+            transform: translateY(-50%);
+            right: -90px;
+            filter: drop-shadow(0 0 8px rgba(255,77,77,0.4));
         }
 
         .nav {
@@ -136,44 +146,30 @@
         }
 
         .clan-period {
-            color: #888;
-            margin: 5px 0;
-            font-style: italic;
+            color: #ffad4d;
+            margin: 0 0 15px 0;
+            font-size: 0.9em;
         }
 
         .clan-description {
-            margin: 10px 0 0 0;
+            color: #ffffff;
             line-height: 1.6;
         }
 
-        .clan-card.current-clan {
-            background: linear-gradient(135deg, rgba(255, 77, 77, 0.1) 0%, rgba(0, 0, 0, 0.7) 100%);
-            border: 1px solid rgba(255, 77, 77, 0.3);
-            position: relative;
-            order: -1;
-        }
-
-        .clan-card.current-clan::before {
-            content: "Текущий клан";
-            position: absolute;
-            top: -12px;
-            right: 20px;
-            background: #ff4d4d;
-            padding: 5px 15px;
-            border-radius: 15px;
-            font-size: 0.8em;
-            font-weight: bold;
-        }
-
-        .clan-history-container {
-            display: flex;
-            flex-direction: column;
-        }
-
         @media (max-width: 768px) {
+            .logo-text {
+                font-size: 3em;
+            }
+
+            .logo-small {
+                width: 60px;
+                right: -70px;
+            }
+
             .nav ul {
                 flex-direction: column;
                 align-items: center;
+                gap: 15px;
             }
         }
     </style>
@@ -182,8 +178,8 @@
     <header class="header">
         <div class="logo-container">
             <h1 class="logo-text"><span>V1BE</span></h1>
+            <img src="images/v1be-logo-tank.png" alt="V1BE Tank Logo" class="logo-small">
         </div>
-        <p>История кланов</p>
     </header>
 
     <nav class="nav">
@@ -196,28 +192,30 @@
     </nav>
 
     <div class="container">
-        <section id="clan-history">
-            <h2 class="section-title">История кланов</h2>
-            <div class="clan-history-section">
-                <div class="clan-history-container">
-                    <div class="clan-card">
-                        <a href="https://lesta.ru/clans/wot/557880/" target="_blank">
-                            <h3 class="clan-name">V1BE</h3>
-                            <p class="clan-period">2023 - настоящее время</p>
-                            <p class="clan-description">Текущий клан, сформированный из опытных игроков. Основная цель - участие в турнирах и развитие командного взаимодействия.</p>
-                        </a>
-                    </div>
-
-                    <div class="clan-card current-clan">
-                        <a href="https://lesta.ru/clans/wot/11983/" target="_blank">
-                            <h3 class="clan-name">[IN-TY] INFINlTY</h3>
-                            <p class="clan-period">2024 - настоящее время</p>
-                            <p class="clan-description">Текущий клан команды V1BE. Клан [IN-TY] INFINlTY представляет собой новую главу в истории команды, где игроки продолжают совершенствовать свое мастерство и стремятся к новым высотам в World of Tanks.</p>
-                        </a>
-                    </div>
-                </div>
+        <h2 class="section-title">Добро пожаловать в команду V1BE</h2>
+        <div class="clan-history-section">
+            <div class="clan-card">
+                <a href="https://lesta.ru/clans/wot/557880/" target="_blank">
+                    <h3 class="clan-name">V1BE</h3>
+                    <p class="clan-period">2023 - настоящее время</p>
+                    <p class="clan-description">
+                        Основной клан команды, созданный для участия в турнирах и развития киберспортивного направления. 
+                        Клан фокусируется на командных тренировках, разработке тактик и стратегий для различных карт и режимов игры.
+                    </p>
+                </a>
             </div>
-        </section>
+
+            <div class="clan-card">
+                <a href="https://lesta.ru/clans/wot/11983/" target="_blank">
+                    <h3 class="clan-name">[IN-TY] INFINlTY</h3>
+                    <p class="clan-period">2022 - 2023</p>
+                    <p class="clan-description">
+                        Предыдущий клан, в котором формировался костяк нашей команды. 
+                        Здесь мы получили первый опыт командных боев и участия в турнирах.
+                    </p>
+                </a>
+            </div>
+        </div>
     </div>
 </body>
 </html> 
