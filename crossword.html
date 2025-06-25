@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Большой кроссворд о живой природе</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: url('https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=2000&q=80') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            min-height: 100vh;
+        }
+        
+        .container {
+            display: flex;
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.2);
+        }
+        
+        .crossword-grid {
+            display: inline-grid;
+            grid-template-columns: repeat(30, 30px);
+            gap: 1px;
+            padding: 15px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .cell {
+            width: 30px;
+            height: 30px;
+            background: white;
+            border: 1px solid #ddd;
+            position: relative;
+        }
+        
+        .cell.blocked {
+            background: rgba(245, 245, 245, 0.8);
+        }
+        
+        .cell input {
+            width: 100%;
+            height: 100%;
+            border: none;
+            text-align: center;
+            font-size: 16px;
+            text-transform: uppercase;
+            padding: 0;
+            box-sizing: border-box;
+            background: transparent;
+        }
+        
+        .cell .number {
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            font-size: 8px;
+            color: #666;
+        }
+        
+        .clues {
+            flex: 1;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            max-height: 800px;
+            overflow-y: auto;
+        }
+        
+        .clue {
+            margin: 8px 0;
+            padding: 8px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s;
+            background: rgba(255, 255, 255, 0.8);
+        }
+        
+        .clue:hover {
+            background: rgba(240, 240, 240, 0.9);
+            transform: translateX(5px);
+        }
+        
+        .clue.active {
+            background: rgba(227, 242, 253, 0.9);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .buttons {
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        button {
+            padding: 12px 25px;
+            margin: 0 8px;
+            border: none;
+            border-radius: 25px;
+            background: rgba(38, 166, 154, 0.9);
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            backdrop-filter: blur(5px);
+        }
+        
+        button:hover {
+            background: rgba(0, 137, 123, 0.95);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+        }
+
+        h2 {
+            color: #00695c;
+            border-bottom: 2px solid rgba(38, 166, 154, 0.5);
+            padding-bottom: 8px;
+            margin-top: 20px;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+        }
+
+        .clues::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .clues::-webkit-scrollbar-track {
+            background: rgba(241, 241, 241, 0.5);
+            border-radius: 4px;
+        }
+
+        .clues::-webkit-scrollbar-thumb {
+            background: rgba(38, 166, 154, 0.7);
+            border-radius: 4px;
+        }
+
+        .clues::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 137, 123, 0.8);
+        }
+
+        .current-word {
+            background: rgba(224, 242, 241, 0.9);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+            font-size: 18px;
+            display: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        @keyframes highlight {
+            0% { background-color: rgba(224, 242, 241, 0.8); }
+            50% { background-color: rgba(178, 223, 219, 0.9); }
+            100% { background-color: rgba(224, 242, 241, 0.8); }
+        }
+
+        .cell.highlighted input {
+            animation: highlight 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <h1>Большой кроссворд о живой природе</h1>
+    <div class="container">
+        <div class="crossword-grid" id="grid"></div>
+        <div class="clues">
+            <div id="currentWord" class="current-word"></div>
+            <h2>По горизонтали:</h2>
+            <div id="acrossClues"></div>
+            <h2>По вертикали:</h2>
+            <div id="downClues"></div>
+        </div>
+    </div>
+    <div class="buttons">
+        <button onclick="checkAnswers()">Проверить</button>
+        <button onclick="showHint()">Подсказка</button>
+        <button onclick="resetCrossword()">Сбросить</button>
+    </div>
+
+    <script>
+        const crossword = {
+            size: 30,
+            words: [
+                // По горизонтали
+                {word: "АНТИЛОПА", row: 1, col: 5, across: true, clue: "Быстроногое копытное животное саванны"},
+                {word: "КРОКОДИЛ", row: 3, col: 1, across: true, clue: "Хищная рептилия, живущая в воде и на суше"},
+                {word: "ЛЕОПАРД", row: 3, col: 15, across: true, clue: "Пятнистый хищник из семейства кошачьих"},
+                {word: "ЖИРАФ", row: 5, col: 3, across: true, clue: "Самое высокое наземное животное"},
+                {word: "ГОРИЛЛА", row: 5, col: 20, across: true, clue: "Крупнейшая человекообразная обезьяна"},
+                {word: "МЕДВЕДЬ", row: 7, col: 8, across: true, clue: "Крупный хищник, впадающий в спячку"},
+                {word: "ЛЕНИВЕЦ", row: 7, col: 18, across: true, clue: "Медлительное животное, живущее на деревьях"},
+                {word: "КЕНГУРУ", row: 9, col: 2, across: true, clue: "Сумчатое животное из Австралии"},
+                {word: "НОСОРОГ", row: 9, col: 15, across: true, clue: "Массивное животное с рогом"},
+                {word: "БАБОЧКА", row: 11, col: 5, across: true, clue: "Красивое летающее насекомое"},
+                {word: "МУРАВЕЙ", row: 11, col: 20, across: true, clue: "Трудолюбивое общественное насекомое"},
+                {word: "ДЕЛЬФИН", row: 13, col: 1, across: true, clue: "Умное морское млекопитающее"},
+                {word: "ПАВЛИН", row: 13, col: 12, across: true, clue: "Птица с красивым хвостом-веером"},
+                {word: "ЧЕРЕПАХА", row: 15, col: 8, across: true, clue: "Медлительное животное с панцирем"},
+                {word: "СТРАУС", row: 17, col: 3, across: true, clue: "Крупная нелетающая птица"},
+                {word: "ПИНГВИН", row: 17, col: 18, across: true, clue: "Полярная птица, хорошо плавающая"},
+                {word: "ФЛАМИНГО", row: 19, col: 10, across: true, clue: "Розовая птица на длинных ногах"},
+                {word: "ЯГУАР", row: 21, col: 5, across: true, clue: "Хищник из тропических лесов Америки"},
+                {word: "ВЕРБЛЮД", row: 21, col: 15, across: true, clue: "Корабль пустыни"},
+
+                // По вертикали
+                {word: "ПАНДА", row: 1, col: 5, across: false, clue: "Бамбуковый медведь"},
+                {word: "ЛАМА", row: 1, col: 8, across: false, clue: "Южноамериканское вьючное животное"},
+                {word: "ОРЕЛ", row: 1, col: 11, across: false, clue: "Хищная птица с острым зрением"},
+                {word: "СЛОН", row: 1, col: 14, across: false, clue: "Самое крупное наземное животное"},
+                {word: "ВОЛК", row: 1, col: 17, across: false, clue: "Хищник семейства псовых"},
+                {word: "ЛИСА", row: 2, col: 20, across: false, clue: "Рыжая хитрая охотница"},
+                {word: "ЗАЯЦ", row: 3, col: 23, across: false, clue: "Длинноухий прыгун"},
+                {word: "БЕЛКА", row: 5, col: 3, across: false, clue: "Рыжая любительница орехов"},
+                {word: "ВЫДРА", row: 5, col: 6, across: false, clue: "Водное животное семейства куньих"},
+                {word: "СОВА", row: 7, col: 9, across: false, clue: "Ночная хищная птица"},
+                {word: "ЕНОТ", row: 9, col: 12, across: false, clue: "Полоскун с маской на мордочке"},
+                {word: "ПАУК", row: 11, col: 15, across: false, clue: "Восьминогий охотник"},
+                {word: "ЗМЕЯ", row: 13, col: 18, across: false, clue: "Ползучая рептилия"},
+                {word: "РЫСЬ", row: 15, col: 21, across: false, clue: "Дикая кошка с кисточками на ушах"},
+                {word: "БОБР", row: 15, col: 24, across: false, clue: "Строитель плотин"},
+                {word: "МОРЖ", row: 17, col: 27, across: false, clue: "Морской гигант с бивнями"},
+                {word: "КОАЛА", row: 19, col: 10, across: false, clue: "Сумчатый медведь"},
+                {word: "ЕЖ", row: 21, col: 13, across: false, clue: "Колючий насекомоядный зверек"},
+                {word: "ТИГР", row: 19, col: 16, across: false, clue: "Полосатый хищник"},
+                {word: "ЛОСЬ", row: 17, col: 19, across: false, clue: "Рогатый житель леса"}
+            ]
+        };
+
+        let activeWord = null;
+
+        function createGrid() {
+            const grid = document.getElementById('grid');
+            grid.style.gridTemplateColumns = `repeat(${crossword.size}, 30px)`;
+            
+            // Создаем пустую сетку
+            for(let i = 0; i < crossword.size; i++) {
+                for(let j = 0; j < crossword.size; j++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'cell blocked';
+                    grid.appendChild(cell);
+                }
+            }
+            
+            // Размещаем слова и нумеруем их
+            let wordNumber = 1;
+            crossword.words.forEach(word => {
+                const cells = [];
+                for(let i = 0; i < word.word.length; i++) {
+                    const row = word.row - 1;
+                    const col = word.col - 1;
+                    const cellIndex = (row + (word.across ? 0 : i)) * crossword.size + (col + (word.across ? i : 0));
+                    const cell = grid.children[cellIndex];
+                    
+                    if(cell.className === 'cell blocked') {
+                        cell.className = 'cell';
+                        const input = document.createElement('input');
+                        input.maxLength = 1;
+                        input.dataset.correct = word.word[i];
+                        cell.appendChild(input);
+                    }
+                    
+                    if(i === 0 && !cell.querySelector('.number')) {
+                        const number = document.createElement('div');
+                        number.className = 'number';
+                        number.textContent = wordNumber;
+                        cell.appendChild(number);
+                    }
+                    
+                    cells.push(cell);
+                }
+                
+                cells.forEach(cell => {
+                    const input = cell.querySelector('input');
+                    if(input) {
+                        input.addEventListener('input', handleInput);
+                        input.addEventListener('focus', () => selectWord(word));
+                        input.addEventListener('keydown', handleKeyDown);
+                    }
+                });
+                
+                word.number = wordNumber++;
+            });
+        }
+
+        function createClues() {
+            const acrossClues = document.getElementById('acrossClues');
+            const downClues = document.getElementById('downClues');
+            
+            crossword.words.forEach(word => {
+                const clue = document.createElement('div');
+                clue.className = 'clue';
+                clue.textContent = `${word.number}. ${word.clue}`;
+                clue.addEventListener('click', () => selectWord(word));
+                
+                if(word.across) {
+                    acrossClues.appendChild(clue);
+                } else {
+                    downClues.appendChild(clue);
+                }
+            });
+        }
+
+        function handleInput(e) {
+            const input = e.target;
+            input.value = input.value.toUpperCase();
+            
+            if(input.value && activeWord) {
+                const currentCell = input.parentElement;
+                const allCells = Array.from(document.querySelectorAll('.cell'));
+                const currentIndex = allCells.indexOf(currentCell);
+                const nextIndex = currentIndex + (activeWord.across ? 1 : crossword.size);
+                const nextCell = allCells[nextIndex];
+                
+                if(nextCell) {
+                    const nextInput = nextCell.querySelector('input');
+                    if(nextInput) nextInput.focus();
+                }
+            }
+        }
+
+        function handleKeyDown(e) {
+            if(!activeWord) return;
+            
+            const input = e.target;
+            const currentCell = input.parentElement;
+            const allCells = Array.from(document.querySelectorAll('.cell'));
+            const currentIndex = allCells.indexOf(currentCell);
+            
+            let nextIndex;
+            switch(e.key) {
+                case 'ArrowRight':
+                    nextIndex = currentIndex + 1;
+                    break;
+                case 'ArrowLeft':
+                    nextIndex = currentIndex - 1;
+                    break;
+                case 'ArrowDown':
+                    nextIndex = currentIndex + crossword.size;
+                    break;
+                case 'ArrowUp':
+                    nextIndex = currentIndex - crossword.size;
+                    break;
+                case 'Backspace':
+                    if(!input.value) {
+                        nextIndex = currentIndex - (activeWord.across ? 1 : crossword.size);
+                    }
+                    break;
+            }
+            
+            if(nextIndex !== undefined) {
+                const nextCell = allCells[nextIndex];
+                if(nextCell) {
+                    const nextInput = nextCell.querySelector('input');
+                    if(nextInput) {
+                        nextInput.focus();
+                        if(e.key === 'Backspace' && !input.value) {
+                            nextInput.value = '';
+                        }
+                    }
+                }
+                e.preventDefault();
+            }
+        }
+
+        function selectWord(word) {
+            // Снимаем предыдущее выделение
+            document.querySelectorAll('.cell').forEach(cell => {
+                cell.style.backgroundColor = '';
+                cell.classList.remove('highlighted');
+            });
+            document.querySelectorAll('.clue').forEach(clue => {
+                clue.classList.remove('active');
+            });
+            
+            // Выделяем новое слово
+            activeWord = word;
+            const cells = [];
+            for(let i = 0; i < word.word.length; i++) {
+                const row = word.row - 1;
+                const col = word.col - 1;
+                const cellIndex = (row + (word.across ? 0 : i)) * crossword.size + (col + (word.across ? i : 0));
+                const cell = document.getElementById('grid').children[cellIndex];
+                cell.style.backgroundColor = '#e3f2fd';
+                cell.classList.add('highlighted');
+                cells.push(cell);
+            }
+            
+            // Выделяем подсказку
+            const clues = document.querySelectorAll('.clue');
+            clues.forEach(clue => {
+                if(clue.textContent.startsWith(word.number + '.')) {
+                    clue.classList.add('active');
+                    clue.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
+            });
+            
+            // Показываем текущий вопрос
+            const currentWord = document.getElementById('currentWord');
+            currentWord.textContent = word.clue;
+            currentWord.style.display = 'block';
+            
+            // Фокусируемся на первой пустой ячейке
+            for(const cell of cells) {
+                const input = cell.querySelector('input');
+                if(!input.value) {
+                    input.focus();
+                    break;
+                }
+            }
+        }
+
+        function checkAnswers() {
+            let allCorrect = true;
+            document.querySelectorAll('.cell input').forEach(input => {
+                if(input.value !== input.dataset.correct) {
+                    input.style.color = 'red';
+                    allCorrect = false;
+                } else {
+                    input.style.color = 'green';
+                }
+            });
+            
+            if(allCorrect) {
+                alert('Поздравляем! Все ответы правильные!');
+            } else {
+                alert('Есть ошибки. Неправильные буквы выделены красным цветом.');
+            }
+        }
+
+        function showHint() {
+            if(!activeWord) {
+                alert('Выберите слово, кликнув на подсказку или ячейку');
+                return;
+            }
+            
+            const cells = [];
+            for(let i = 0; i < activeWord.word.length; i++) {
+                const row = activeWord.row - 1;
+                const col = activeWord.col - 1;
+                const cellIndex = (row + (activeWord.across ? 0 : i)) * crossword.size + (col + (activeWord.across ? i : 0));
+                cells.push(document.getElementById('grid').children[cellIndex]);
+            }
+            
+            const emptyCells = cells.filter(cell => !cell.querySelector('input').value);
+            if(emptyCells.length > 0) {
+                const randomCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+                const input = randomCell.querySelector('input');
+                input.value = input.dataset.correct;
+                input.style.color = 'blue';
+            } else {
+                alert('Все буквы в этом слове уже заполнены');
+            }
+        }
+
+        function resetCrossword() {
+            if(confirm('Вы уверены, что хотите очистить все ответы?')) {
+                document.querySelectorAll('.cell input').forEach(input => {
+                    input.value = '';
+                    input.style.color = '';
+                });
+                document.querySelectorAll('.cell').forEach(cell => {
+                    cell.style.backgroundColor = '';
+                    cell.classList.remove('highlighted');
+                });
+                document.querySelectorAll('.clue').forEach(clue => {
+                    clue.classList.remove('active');
+                });
+                document.getElementById('currentWord').style.display = 'none';
+                activeWord = null;
+            }
+        }
+
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', () => {
+            createGrid();
+            createClues();
+        });
+    </script>
+</body>
+</html> 
