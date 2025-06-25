@@ -301,6 +301,70 @@
         .main-logo:hover {
             transform: scale(1.05);
         }
+
+        .player-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .player-card {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .player-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 77, 77, 0.3);
+            border-color: rgba(255, 77, 77, 0.5);
+        }
+
+        .player-name {
+            color: #ff4d4d;
+            font-size: 1.5em;
+            margin: 0 0 10px 0;
+            border-bottom: 2px solid rgba(255, 77, 77, 0.3);
+            padding-bottom: 5px;
+        }
+
+        .player-info {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .player-role {
+            color: #ffad4d;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .player-tank {
+            color: #ffffff;
+            font-style: italic;
+            margin: 0;
+            padding: 5px 10px;
+            background: rgba(255, 77, 77, 0.1);
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .player-description {
+            color: #cccccc;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 768px) {
+            .player-list {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -337,64 +401,88 @@
             </div>
         </section>
 
-        <section id="team">
-            <h2 class="section-title">Состав команды</h2>
-            <div class="team-section">
+        <section class="team-section" id="team">
+            <h2>Состав команды</h2>
+            <div class="player-list">
                 <div class="player-card">
-                    <div class="tank-preview">
-                        <img src="https://wiki.gcdn.co/images/thumb/2/29/AnnoA119_Panhard_EBR_105.png/800px-AnnoA119_Panhard_EBR_105.png" alt="Panhard EBR 105">
-                    </div>
-                    <div class="player-avatar">A</div>
                     <h3 class="player-name">A1c0_Fighter</h3>
-                    <p class="player-role">Командир</p>
+                    <div class="player-info">
+                        <p class="player-role">Командир</p>
+                        <p class="player-tank">Любимый танк: Panhard EBR 105</p>
+                        <p class="player-description">Опытный командир и мастер лёгких танков. Специализируется на разведке и быстрых фланговых атаках.</p>
+                    </div>
                 </div>
 
                 <div class="player-card">
-                    <div class="player-avatar">E</div>
-                    <h3 class="player-name">EternalSnowfall</h3>
-                    <p class="player-role">Тяжелый танк</p>
+                    <h3 class="player-name">Kirilloid</h3>
+                    <div class="player-info">
+                        <p class="player-role">Заместитель командира</p>
+                        <p class="player-tank">Любимый танк: Object 279 (e)</p>
+                        <p class="player-description">Стратег команды, специализируется на тяжелых танках и прорыве обороны противника.</p>
+                    </div>
                 </div>
 
                 <div class="player-card">
-                    <div class="player-avatar">I</div>
-                    <h3 class="player-name">INedStreXI</h3>
-                    <p class="player-role">Средний танк</p>
+                    <h3 class="player-name">Koldun4ik</h3>
+                    <div class="player-info">
+                        <p class="player-role">Полевой командир</p>
+                        <p class="player-tank">Любимый танк: T95/FV4201 Chieftain</p>
+                        <p class="player-description">Тактический лидер в бою, отлично координирует действия команды в критических ситуациях.</p>
+                    </div>
                 </div>
 
                 <div class="player-card">
-                    <div class="player-avatar">L</div>
-                    <h3 class="player-name">last_25</h3>
-                    <p class="player-role">Разведчик</p>
+                    <h3 class="player-name">Bars_1974</h3>
+                    <div class="player-info">
+                        <p class="player-role">Снайпер</p>
+                        <p class="player-tank">Любимый танк: Strv 103B</p>
+                        <p class="player-description">Мастер дальних дистанций, превосходно контролирует ключевые позиции на карте.</p>
+                    </div>
                 </div>
 
                 <div class="player-card">
-                    <div class="player-avatar">U</div>
-                    <h3 class="player-name">ugopejke88</h3>
-                    <p class="player-role">ПТ-САУ</p>
+                    <h3 class="player-name">Vit_01</h3>
+                    <div class="player-info">
+                        <p class="player-role">Штурмовик</p>
+                        <p class="player-tank">Любимый танк: Super Conqueror</p>
+                        <p class="player-description">Специалист по прорыву укрепленных позиций и ближнему бою.</p>
+                    </div>
                 </div>
 
                 <div class="player-card">
-                    <div class="player-avatar">J</div>
-                    <h3 class="player-name">J0hnyB3st</h3>
-                    <p class="player-role">Артиллерия</p>
+                    <h3 class="player-name">Bars_1973</h3>
+                    <div class="player-info">
+                        <p class="player-role">Поддержка</p>
+                        <p class="player-tank">Любимый танк: Bat.-Châtillon 25 t</p>
+                        <p class="player-description">Эксперт по фланговым маневрам и быстрым атакам с неожиданных направлений.</p>
+                    </div>
                 </div>
 
                 <div class="player-card">
-                    <div class="player-avatar">F</div>
-                    <h3 class="player-name">fgh171950</h3>
-                    <p class="player-role">Запасной игрок</p>
+                    <h3 class="player-name">Terminator_2</h3>
+                    <div class="player-info">
+                        <p class="player-role">Штурмовик</p>
+                        <p class="player-tank">Любимый танк: IS-7</p>
+                        <p class="player-description">Надежный игрок в ближнем бою, отлично держит линию фронта.</p>
+                    </div>
                 </div>
 
                 <div class="player-card">
-                    <div class="player-avatar">F</div>
-                    <h3 class="player-name">___Flame</h3>
-                    <p class="player-role">Запасной игрок</p>
+                    <h3 class="player-name">Terminator_1</h3>
+                    <div class="player-info">
+                        <p class="player-role">Поддержка</p>
+                        <p class="player-tank">Любимый танк: Object 140</p>
+                        <p class="player-description">Универсальный игрок, способный эффективно действовать в любой роли.</p>
+                    </div>
                 </div>
 
                 <div class="player-card">
-                    <div class="player-avatar">P</div>
-                    <h3 class="player-name">pro100_BOSS_2002</h3>
-                    <p class="player-role">Запасной игрок</p>
+                    <h3 class="player-name">SEM_SEM</h3>
+                    <div class="player-info">
+                        <p class="player-role">Разведчик</p>
+                        <p class="player-tank">Любимый танк: T-100 LT</p>
+                        <p class="player-description">Мастер активной разведки и раннего обнаружения противника.</p>
+                    </div>
                 </div>
             </div>
         </section>
