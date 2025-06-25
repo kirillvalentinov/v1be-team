@@ -16,27 +16,37 @@
             font-family: 'Roboto', Arial, sans-serif;
             margin: 0;
             color: #ffffff;
-            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), 
-                       url('https://wallpapercave.com/wp/wp6757002.jpg') no-repeat center center fixed;
-            background-size: cover;
+            background: linear-gradient(rgba(0,0,0,0.92), rgba(0,0,0,0.92)), 
+                       url('https://raw.githubusercontent.com/kirillvalentinov/v1be-team/gh-pages/images/v1be-logo.png') no-repeat center center fixed;
+            background-size: contain;
             min-height: 100vh;
         }
 
         .header {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                       url('https://wallpapercave.com/wp/wp2405368.jpg');
-            background-size: cover;
-            background-position: center;
-            padding: 100px 20px;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+            padding: 40px 20px 100px;
             text-align: center;
             position: relative;
             border-bottom: 4px solid #ff4d4d;
+        }
+
+        .logo-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 0 10px rgba(255,77,77,0.5));
         }
 
         .header h1 {
             font-size: 3.5em;
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            display: none;
         }
 
         .nav {
@@ -196,7 +206,9 @@
 </head>
 <body>
     <header class="header">
-        <h1>V1BE</h1>
+        <div class="logo-container">
+            <img src="https://raw.githubusercontent.com/kirillvalentinov/v1be-team/gh-pages/images/v1be-logo.png" alt="V1BE Logo">
+        </div>
         <p>Профессиональная команда World of Tanks</p>
     </header>
 
