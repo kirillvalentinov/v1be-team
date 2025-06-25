@@ -34,12 +34,23 @@
             max-width: 400px;
             margin: 0 auto;
             padding: 20px;
+            position: relative;
         }
 
         .logo-container img {
             width: 100%;
             height: auto;
             filter: drop-shadow(0 0 10px rgba(255,77,77,0.5));
+        }
+
+        .logo-small {
+            position: absolute;
+            width: 80px;
+            height: auto;
+            top: 50%;
+            transform: translateY(-50%);
+            right: -90px;
+            filter: drop-shadow(0 0 8px rgba(255,77,77,0.4));
         }
 
         .header h1 {
@@ -201,6 +212,13 @@
             .team-section {
                 grid-template-columns: 1fr;
             }
+
+            .logo-small {
+                position: static;
+                width: 60px;
+                margin-top: 20px;
+                transform: none;
+            }
         }
     </style>
 </head>
@@ -208,6 +226,7 @@
     <header class="header">
         <div class="logo-container">
             <img src="https://raw.githubusercontent.com/kirillvalentinov/v1be-team/gh-pages/images/v1be-logo.png" alt="V1BE Logo">
+            <img src="https://raw.githubusercontent.com/kirillvalentinov/v1be-team/gh-pages/images/v1be-logo-tank.png" alt="V1BE Tank Logo" class="logo-small">
         </div>
         <p>Профессиональная команда World of Tanks</p>
     </header>
