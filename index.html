@@ -161,20 +161,28 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.95);
             border-radius: 10px;
-            padding: 10px;
+            padding: 15px;
+            transform: scale(0.95);
         }
 
         .tank-preview img {
-            max-width: 100%;
-            max-height: 100%;
+            max-width: 90%;
+            max-height: 90%;
             object-fit: contain;
             filter: drop-shadow(0 0 10px rgba(255, 77, 77, 0.5));
+            transform: scale(0.95);
+            transition: all 0.3s ease;
         }
 
         .player-card:hover .tank-preview {
             opacity: 1;
+            transform: scale(1);
+        }
+
+        .player-card:hover .tank-preview img {
+            transform: scale(1);
         }
 
         .player-card:hover .player-avatar {
@@ -307,6 +315,18 @@
         .main-logo:hover {
             transform: scale(1.05);
         }
+
+        .tank-svg {
+            width: 100%;
+            height: 100%;
+            color: #ff4d4d;
+            transition: all 0.3s ease;
+        }
+
+        .player-card:hover .tank-svg {
+            color: #ffad4d;
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body>
@@ -348,7 +368,9 @@
             <div class="team-section">
                 <div class="player-card">
                     <div class="tank-preview">
-                        <img src="https://static.wikia.nocookie.net/wot_esports/images/5/5f/Panhard_EBR_105.png" alt="Panhard EBR 105">
+                        <svg viewBox="0 0 100 50" class="tank-svg">
+                            <path d="M10,35 L90,35 L85,45 L15,45 Z M30,25 L70,25 L65,35 L35,35 Z M40,15 L60,15 L58,25 L42,25 Z" fill="currentColor"/>
+                        </svg>
                     </div>
                     <div class="player-avatar">A</div>
                     <h3 class="player-name">A1c0_Fighter</h3>
@@ -356,7 +378,9 @@
 
                 <div class="player-card">
                     <div class="tank-preview">
-                        <img src="https://static.wikia.nocookie.net/wot_esports/images/2/23/Object_279_early.png" alt="Object 279 (e)">
+                        <svg viewBox="0 0 100 50" class="tank-svg">
+                            <path d="M10,35 L90,35 L85,45 L15,45 Z M25,25 L75,25 L70,35 L30,35 Z M35,15 L65,15 L62,25 L38,25 Z" fill="currentColor"/>
+                        </svg>
                     </div>
                     <div class="player-avatar">E</div>
                     <h3 class="player-name">EternalSnowfall</h3>
@@ -364,7 +388,9 @@
 
                 <div class="player-card">
                     <div class="tank-preview">
-                        <img src="https://static.wikia.nocookie.net/wot_esports/images/8/89/Object_430U.png" alt="Object 430U">
+                        <svg viewBox="0 0 100 50" class="tank-svg">
+                            <path d="M5,35 L95,35 L90,45 L10,45 Z M20,25 L80,25 L75,35 L25,35 Z M30,15 L70,15 L67,25 L33,25 Z" fill="currentColor"/>
+                        </svg>
                     </div>
                     <div class="player-avatar">I</div>
                     <h3 class="player-name">INedStreXI</h3>
@@ -372,7 +398,9 @@
 
                 <div class="player-card">
                     <div class="tank-preview">
-                        <img src="https://static.wikia.nocookie.net/wot_esports/images/f/f2/Object_268_4.png" alt="Object 268 v4">
+                        <svg viewBox="0 0 100 50" class="tank-svg">
+                            <path d="M15,35 L85,35 L80,45 L20,45 Z M35,25 L65,25 L60,35 L40,35 Z M45,15 L55,15 L53,25 L47,25 Z" fill="currentColor"/>
+                        </svg>
                     </div>
                     <div class="player-avatar">L</div>
                     <h3 class="player-name">last_25</h3>
@@ -380,7 +408,9 @@
 
                 <div class="player-card">
                     <div class="tank-preview">
-                        <img src="https://static.wikia.nocookie.net/wot_esports/images/3/3c/UDES_15_16.png" alt="UDES 15/16">
+                        <svg viewBox="0 0 100 50" class="tank-svg">
+                            <path d="M8,35 L92,35 L87,45 L13,45 Z M28,25 L72,25 L67,35 L33,35 Z M38,15 L62,15 L59,25 L41,25 Z" fill="currentColor"/>
+                        </svg>
                     </div>
                     <div class="player-avatar">U</div>
                     <h3 class="player-name">ugopejke88</h3>
@@ -388,7 +418,9 @@
 
                 <div class="player-card">
                     <div class="tank-preview">
-                        <img src="https://static.wikia.nocookie.net/wot_esports/images/b/b5/Pz.Kpfw._VII.png" alt="Pz.Kpfw. VII">
+                        <svg viewBox="0 0 100 50" class="tank-svg">
+                            <path d="M12,35 L88,35 L83,45 L17,45 Z M32,25 L68,25 L63,35 L37,35 Z M42,15 L58,15 L55,25 L45,25 Z" fill="currentColor"/>
+                        </svg>
                     </div>
                     <div class="player-avatar">J</div>
                     <h3 class="player-name">J0hnyB3st</h3>
@@ -396,7 +428,9 @@
 
                 <div class="player-card">
                     <div class="tank-preview">
-                        <img src="https://static.wikia.nocookie.net/wot_esports/images/f/f5/Bat_Chatillon_25t.png" alt="Bat.-Châtillon 25 t">
+                        <svg viewBox="0 0 100 50" class="tank-svg">
+                            <path d="M7,35 L93,35 L88,45 L12,45 Z M27,25 L73,25 L68,35 L32,35 Z M37,15 L63,15 L60,25 L40,25 Z" fill="currentColor"/>
+                        </svg>
                     </div>
                     <div class="player-avatar">F</div>
                     <h3 class="player-name">fgh171950</h3>
@@ -404,7 +438,9 @@
 
                 <div class="player-card">
                     <div class="tank-preview">
-                        <img src="https://static.wikia.nocookie.net/wot_esports/images/3/35/AMX_13_105.png" alt="AMX 13 105">
+                        <svg viewBox="0 0 100 50" class="tank-svg">
+                            <path d="M9,35 L91,35 L86,45 L14,45 Z M29,25 L71,25 L66,35 L34,35 Z M39,15 L61,15 L58,25 L42,25 Z" fill="currentColor"/>
+                        </svg>
                     </div>
                     <div class="player-avatar">F</div>
                     <h3 class="player-name">___Flame</h3>
@@ -412,7 +448,9 @@
 
                 <div class="player-card">
                     <div class="tank-preview">
-                        <img src="https://static.wikia.nocookie.net/wot_esports/images/2/24/IS-7.png" alt="IS-7">
+                        <svg viewBox="0 0 100 50" class="tank-svg">
+                            <path d="M6,35 L94,35 L89,45 L11,45 Z M26,25 L74,25 L69,35 L31,35 Z M36,15 L64,15 L61,25 L39,25 Z" fill="currentColor"/>
+                        </svg>
                     </div>
                     <div class="player-avatar">P</div>
                     <h3 class="player-name">pro100_BOSS_2002</h3>
