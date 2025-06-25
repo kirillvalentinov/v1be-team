@@ -212,36 +212,54 @@
         }
 
         .clan-card {
-            background: rgba(42, 42, 42, 0.9);
+            background: rgba(0, 0, 0, 0.7);
             border-radius: 10px;
-            padding: 30px;
-            margin-bottom: 30px;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            transition: transform 0.3s;
-            border-left: 4px solid #ff4d4d;
+            padding: 20px;
+            margin: 20px 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .clan-card:hover {
-            transform: translateX(10px);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 77, 77, 0.3);
         }
 
         .clan-name {
-            font-size: 1.8em;
             color: #ff4d4d;
-            margin-bottom: 10px;
+            margin: 0 0 10px 0;
+            font-size: 1.5em;
         }
 
         .clan-period {
-            color: #ffad4d;
-            font-size: 1.1em;
-            margin-bottom: 15px;
+            color: #888;
+            margin: 5px 0;
+            font-style: italic;
         }
 
         .clan-description {
-            color: #ffffff;
+            margin: 10px 0 0 0;
             line-height: 1.6;
-            font-size: 1.1em;
+        }
+
+        /* Стили для текущего клана */
+        .clan-card:first-child {
+            background: linear-gradient(135deg, rgba(255, 77, 77, 0.1) 0%, rgba(0, 0, 0, 0.7) 100%);
+            border: 1px solid rgba(255, 77, 77, 0.3);
+            position: relative;
+        }
+
+        .clan-card:first-child::before {
+            content: "Текущий клан";
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: #ff4d4d;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: bold;
         }
 
         @media (max-width: 768px) {
@@ -304,6 +322,11 @@
                     <h3 class="clan-name">V1BE</h3>
                     <p class="clan-period">2023 - настоящее время</p>
                     <p class="clan-description">Текущий клан, сформированный из опытных игроков. Основная цель - участие в турнирах и развитие командного взаимодействия.</p>
+                </div>
+                <div class="clan-card">
+                    <h3 class="clan-name">[IN-TY] INFINlTY</h3>
+                    <p class="clan-period">2024 - настоящее время</p>
+                    <p class="clan-description">Текущий клан команды V1BE. Клан [IN-TY] INFINlTY представляет собой новую главу в истории команды, где игроки продолжают совершенствовать свое мастерство и стремятся к новым высотам в World of Tanks.</p>
                 </div>
             </div>
         </section>
