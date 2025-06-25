@@ -17,8 +17,8 @@
             margin: 0;
             color: #ffffff;
             background: linear-gradient(rgba(0,0,0,0.92), rgba(0,0,0,0.92)), 
-                       url('https://wallpapercave.com/wp/wp2405368.jpg') no-repeat center center fixed;
-            background-size: cover;
+                       url('https://armored.ru/images/clans/wot/557880/emblem/64x64.png') no-repeat center center fixed;
+            background-size: contain;
             min-height: 100vh;
         }
 
@@ -31,7 +31,7 @@
         }
 
         .logo-container {
-            max-width: 400px;
+            max-width: 300px;
             margin: 0 auto;
             padding: 20px;
             position: relative;
@@ -251,17 +251,22 @@
         }
 
         .main-logo {
-            max-width: 100%;
+            max-width: 300px;
             height: auto;
             border-radius: 10px;
-            box-shadow: 0 0 20px rgba(255,77,77,0.5);
+            filter: drop-shadow(0 0 20px rgba(255,77,77,0.5));
+            transition: transform 0.3s ease;
+        }
+
+        .main-logo:hover {
+            transform: scale(1.05);
         }
     </style>
 </head>
 <body>
     <header class="header">
         <div class="logo-container">
-            <img src="https://wallpapercave.com/wp/wp2405368.jpg" alt="V1BE Logo" class="main-logo">
+            <img src="https://armored.ru/images/clans/wot/557880/emblem/256x256.png" alt="V1BE Logo" class="main-logo">
         </div>
         <p>Профессиональная команда World of Tanks</p>
     </header>
