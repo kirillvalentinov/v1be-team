@@ -1,1 +1,424 @@
- 
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V1BE Team - Главная</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            color: #ffffff;
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), 
+                       url('https://wallpapercave.com/wp/wp6757002.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
+            padding: 40px 20px 100px;
+            text-align: center;
+            position: relative;
+            border-bottom: 4px solid #ff4d4d;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+
+        .logo-text {
+            font-size: 4em;
+            font-weight: bold;
+            color: #ff4d4d;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin: 0;
+            letter-spacing: 2px;
+            font-family: 'Arial Black', sans-serif;
+            background: linear-gradient(45deg, #ff4d4d, #ffad4d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 10px rgba(255,77,77,0.5));
+        }
+
+        .logo-text span {
+            display: inline-block;
+            transform: skew(-10deg);
+        }
+
+        .logo-small {
+            position: absolute;
+            width: 80px;
+            height: auto;
+            top: 50%;
+            transform: translateY(-50%);
+            right: -90px;
+            filter: drop-shadow(0 0 8px rgba(255,77,77,0.4));
+        }
+
+        .nav {
+            background: rgba(42, 42, 42, 0.9);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(5px);
+            border-bottom: 2px solid #ff4d4d;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .nav a:hover {
+            background: #404040;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 60px 20px;
+            margin-bottom: 40px;
+        }
+
+        .hero-title {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            color: #ff4d4d;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5em;
+            margin-bottom: 40px;
+            color: #ffad4d;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 77, 77, 0.2);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 77, 77, 0.5);
+        }
+
+        .feature-icon {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #ff4d4d;
+        }
+
+        .feature-title {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #ffad4d;
+        }
+
+        .feature-description {
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #ff4d4d, #ffad4d);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 77, 77, 0.4);
+        }
+
+        .about-section {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            border: 1px solid rgba(255, 77, 77, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .about-section:hover {
+            border-color: rgba(255, 77, 77, 0.5);
+            transform: translateY(-5px);
+        }
+
+        .about-title {
+            font-size: 2.5em;
+            color: #ff4d4d;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .about-text {
+            color: #ffffff;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        .disciplines-section, .goals-section, .philosophy-section, .social-section {
+            margin: 30px 0;
+        }
+
+        .section-subtitle {
+            font-size: 1.8em;
+            color: #ffad4d;
+            margin: 20px 0;
+        }
+
+        .discipline-item, .goal-item {
+            margin: 10px 0;
+            padding-left: 20px;
+            position: relative;
+            color: #ffffff;
+            font-size: 1.1em;
+        }
+
+        .discipline-item:before, .goal-item:before {
+            content: "•";
+            color: #ff4d4d;
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            background: rgba(255, 77, 77, 0.1);
+            border-radius: 10px;
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: rgba(255, 77, 77, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .social-icon {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        .join-cta {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 1.3em;
+            color: #ffad4d;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .logo-text {
+                font-size: 3em;
+            }
+
+            .logo-small {
+                width: 60px;
+                right: -70px;
+            }
+
+            .nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .hero-title {
+                font-size: 2.5em;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2em;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-section {
+                padding: 20px;
+            }
+
+            .about-title {
+                font-size: 2em;
+            }
+
+            .section-subtitle {
+                font-size: 1.5em;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo-container">
+            <h1 class="logo-text"><span>V1BE</span></h1>
+            <img src="/v1be-team/images/v1be-logo-tank.png" alt="V1BE Tank Logo" class="logo-small">
+        </div>
+    </header>
+
+    <nav class="nav">
+        <ul>
+            <li><a href="/v1be-team/">Главная</a></li>
+            <li><a href="/v1be-team/news.html">Новости</a></li>
+            <li><a href="/v1be-team/team-roster.html">Состав команды</a></li>
+            <li><a href="/v1be-team/clan-history.html">История кланов</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section class="hero-section">
+            <h2 class="hero-title">Добро пожаловать в V1BE Team</h2>
+            <p class="hero-subtitle">Профессиональная команда World of Tanks</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="feature-title">Высокий скилл</h3>
+                    <p class="feature-description">
+                        Наши игроки постоянно совершенствуют свои навыки и поддерживают высокий уровень игры.
+                        Регулярные тренировки и участие в турнирах помогают нам оставаться в топе.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3 class="feature-title">Командная работа</h3>
+                    <p class="feature-description">
+                        Слаженность действий и взаимопонимание - наши ключевые преимущества.
+                        Каждый игрок знает свою роль и вносит вклад в общий успех команды.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3 class="feature-title">Нацеленность на результат</h3>
+                    <p class="feature-description">
+                        Мы участвуем в турнирах различного уровня и всегда стремимся к победе.
+                        Постоянное развитие и работа над ошибками - наш путь к успеху.
+                    </p>
+                </div>
+            </div>
+            <a href="/v1be-team/team-roster.html" class="cta-button">Познакомиться с командой</a>
+        </section>
+
+        <section class="about-section">
+            <h2 class="about-title">О команде</h2>
+            <p class="about-text">
+                V1BE — это молодая, амбициозная киберспортивная команда, объединяющая талантливых игроков с горящими глазами и железной волей к победе. Мы создаем неповторимую атмосферу драйва, энергии и синергии, где каждый участник не просто игрок, а часть мощного механизма, работающего на результат.
+            </p>
+
+            <div class="disciplines-section">
+                <h3 class="section-subtitle">Дисциплины:</h3>
+                <div class="discipline-item">МИР ТАНКОВ</div>
+                <div class="discipline-item">Прочие киберспортивные направления (по мере развития)</div>
+            </div>
+
+            <div class="goals-section">
+                <h3 class="section-subtitle">Цели:</h3>
+                <div class="goal-item">Закрепиться в топе региональных и международных турниров.</div>
+                <div class="goal-item">Развивать киберспортивную культуру и поддерживать новых талантов.</div>
+                <div class="goal-item">Создавать контент и взаимодействовать с комьюнити.</div>
+            </div>
+
+            <div class="philosophy-section">
+                <h3 class="section-subtitle">Философия:</h3>
+                <p class="about-text">
+                    V1BE — это не просто команда, это стиль жизни. Мы верим, что победа начинается с правильного настроя, дисциплины и страсти к игре. Наш вибр — это сочетание хардкора и кайфа от процесса.
+                </p>
+            </div>
+
+            <div class="social-section">
+                <h3 class="section-subtitle">Соцсети и контакты:</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link">
+                        <span class="social-icon">🎮</span>
+                        Twitch
+                    </a>
+                    <a href="#" class="social-link">
+                        <span class="social-icon">🐦</span>
+                        Twitter
+                    </a>
+                    <a href="#" class="social-link">
+                        <span class="social-icon">💬</span>
+                        Discord
+                    </a>
+                    <a href="#" class="social-link">
+                        <span class="social-icon">📸</span>
+                        Instagram
+                    </a>
+                </div>
+            </div>
+
+            <div class="join-cta">
+                Присоединяйся к нашей волне — и почувствуй V1BE на себе! 🌊🔥
+            </div>
+        </section>
+    </div>
+</body>
+</html> 
