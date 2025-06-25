@@ -140,6 +140,44 @@
             color: #ff4d4d;
         }
 
+        .clan-history-section {
+            margin-top: 40px;
+            margin-bottom: 60px;
+        }
+
+        .clan-card {
+            background: rgba(42, 42, 42, 0.9);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+            border-left: 4px solid #ff4d4d;
+        }
+
+        .clan-card:hover {
+            transform: translateX(10px);
+        }
+
+        .clan-name {
+            font-size: 1.8em;
+            color: #ff4d4d;
+            margin-bottom: 10px;
+        }
+
+        .clan-period {
+            color: #ffad4d;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        .clan-description {
+            color: #ffffff;
+            line-height: 1.6;
+            font-size: 1.1em;
+        }
+
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 2.5em;
@@ -165,12 +203,24 @@
     <nav class="nav">
         <ul>
             <li><a href="#team">Состав команды</a></li>
+            <li><a href="#clan-history">История кланов</a></li>
             <li><a href="#achievements">Достижения</a></li>
             <li><a href="#schedule">Расписание</a></li>
         </ul>
     </nav>
 
     <div class="container">
+        <section id="clan-history">
+            <h2 class="section-title">История кланов</h2>
+            <div class="clan-history-section">
+                <div class="clan-card">
+                    <h3 class="clan-name">V1BE</h3>
+                    <p class="clan-period">2023 - настоящее время</p>
+                    <p class="clan-description">Текущий клан, сформированный из опытных игроков. Основная цель - участие в турнирах и развитие командного взаимодействия.</p>
+                </div>
+            </div>
+        </section>
+
         <section id="team">
             <h2 class="section-title">Состав команды</h2>
             <div class="team-section">
